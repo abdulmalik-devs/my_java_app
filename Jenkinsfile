@@ -1,44 +1,44 @@
-@Library('my-shared-library') _
+// @Library('my-shared-library') _
 
-pipeline{
+// pipeline{
 
-    agent any
+//     agent any
 
-    parameters{
-        choice(name: 'action', choices: 'Create\nDestroy', description: "Choose Create/Destroy" )
-    }
+//     parameters{
+//         choice(name: 'action', choices: 'Create\nDestroy', description: "Choose Create/Destroy" )
+//     }
 
-    stages{
+//     stages{
 
-        stage('Git Checkout'){
-        when { expression { params.action == 'Create' } }
+//         stage('Git Checkout'){
+//         when { expression { params.action == 'Create' } }
 
-            steps{
-            gitCheckout(
-                branch: "main",
-                url: "https://github.com/abdulmalik-devs/my_java_app.git"
-            )
-            }
-        }
-        stage('Unit Test Maven'){
-        when { expression { params.action == 'Create' } }
+//             steps{
+//             gitCheckout(
+//                 branch: "main",
+//                 url: "https://github.com/abdulmalik-devs/my_java_app.git"
+//             )
+//             }
+//         }
+//         stage('Unit Test Maven'){
+//         when { expression { params.action == 'Create' } }
 
-            steps{
-                script{
+//             steps{
+//                 script{
                     
-                    mvnTest()
-                }
-            }
-        }
-        stage('Integration Test Maven'){
-        when { expression { params.action == 'Create' } }
+//                     mvnTest()
+//                 }
+//             }
+//         }
+//         stage('Integration Test Maven'){
+//         when { expression { params.action == 'Create' } }
 
-            steps{
-                script{
+//             steps{
+//                 script{
                     
-                    mvnIntegrationTest()
-                }
-            }
-        }
-    }
-}
+//                     mvnIntegrationTest()
+//                 }
+//             }
+//         }
+//     }
+// }
